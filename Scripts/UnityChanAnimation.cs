@@ -10,12 +10,17 @@ public class UnityChanAnimation : MonoBehaviour
     private float timeBetweenRoll = 1.05f;
     private bool currentlyRolling;
 
+    public AudioSource punch1, weaponSwing1;
+
     //public PickUpController pickUpController;
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         animator = GetComponent<Animator>();
         //pickUpController = GetComponent<PickUpController>();
+        
     }
 
     // Update is called once per frame
@@ -65,9 +70,15 @@ public class UnityChanAnimation : MonoBehaviour
                 if (PickUpController.full == true)
                 {
                     animator.SetBool("isSwingingWeapon1", true);
+
+                    weaponSwing1.Play();
+                    Debug.Log("swinging weapon");
+
                 } else
                 {
                     animator.SetBool("isPunching1", true);
+                    punch1.Play();
+                    Debug.Log("punching"); 
                 }
             }
 
@@ -89,10 +100,14 @@ public class UnityChanAnimation : MonoBehaviour
                 if (PickUpController.full == true)
                 {
                     animator.SetBool("isSwingingWeapon1", true);
+                    weaponSwing1.Play();
+                    Debug.Log("swinging weapon");
                 }
                 else
                 {
                     animator.SetBool("isPunching1", true);
+                    punch1.Play();
+                    Debug.Log("punching");
                 }
             }
 

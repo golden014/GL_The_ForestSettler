@@ -8,12 +8,13 @@ public class HPController : MonoBehaviour
     public GameObject enemy, unityChan;
     public SliderController HPSlider;
     private float delayInSeconds = 0;
+  //  public AudioSource dieSound;
 
     private static Animator animator;
 
     private void Start()
     {
-
+        
         animator = GetComponent<Animator>();
 
     }
@@ -24,7 +25,12 @@ public class HPController : MonoBehaviour
         if (enemy && Vector3.Distance(enemy.transform.position, unityChan.transform.position) < 3)
         {
 
-            if(delayInSeconds >= 2)
+            if (Input.GetMouseButtonDown(0))
+            {
+                //HP
+            }
+
+            if (delayInSeconds >= 2)
             {
 
                 enemy.GetComponent<Animator>().SetTrigger("Attack1");
@@ -42,7 +48,8 @@ public class HPController : MonoBehaviour
     {
 
         animator.SetTrigger("Die");
-
+        
+       
     }
 
 }

@@ -12,13 +12,19 @@ public class SliderController : MonoBehaviour
     [SerializeField]
     public Slider HPSlider;
 
+    public AudioSource dieSound;
+
     public Animator playerAnimator;
 
     public void onHitHP()
     {
         remainingHP -= 10;
 
-        if (remainingHP <= 0) HPController.die();
+        if (remainingHP <= 0)
+        {
+           //  dieSound.Play(); 
+            HPController.die();
+        }
         HPSlider.value = remainingHP;
         valueHP.text = remainingHP.ToString();
         
