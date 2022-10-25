@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
-public class SliderController : MonoBehaviour
+public class SliderControllerWolf : MonoBehaviour
 {
     [SerializeField]
     public Text valueHP;
@@ -11,12 +11,12 @@ public class SliderController : MonoBehaviour
     [SerializeField]
     public Text valueMaxHP;
 
-   
+
     [SerializeField]
     public Slider HPSlider;
 
     public AudioSource dieSound;
-     
+
     public Animator bearAnimator;
 
     /*
@@ -24,35 +24,33 @@ public class SliderController : MonoBehaviour
     public static int bearCurrHP = 100;
     public static int bearHP = 100;
     */
-   // public static 
+    // public static 
 
     public void onHitHP()
     {
 
-        if ((playerStat.strength - BearStat.bearAttack) <= 0 && playerStat.dead == false)
+        if ((playerStat.strength - WolfStat.bearAttack) <= 0 && playerStat.dead == false)
         {
             playerStat.dead = true;
             playerStat.strength = 0;
             dieSound.Play();
             HPController.die();
             bearAnimator.SetBool("Attack1", true);
-        } 
-        else if ((playerStat.strength - BearStat.bearAttack) > 0 && playerStat.dead == false)
+        }
+        else if ((playerStat.strength - WolfStat.bearAttack) > 0 && playerStat.dead == false)
         {
-            playerStat.strength -= BearStat.bearAttack;
+            playerStat.strength -= WolfStat.bearAttack;
         }
 
         if (playerStat.dead == true)
         {
             bearAnimator.SetBool("Attack1", false);
-           // bearAnimator.SetBool("WalkForward", true);
+            // bearAnimator.SetBool("WalkForward", true);
         }
 
         HPSlider.value = playerStat.strength;
         valueHP.text = playerStat.strength.ToString();
-        
-    }
 
-   
+    }
 
 }

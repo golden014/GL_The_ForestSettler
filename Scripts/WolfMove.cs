@@ -1,28 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
-public class BearMove : MonoBehaviour
+public class WolfMove : MonoBehaviour
 {
 
     public NavMeshAgent nmAgent;
     public GameObject unityChan;
     public Animator nmAnimator;
     private int timer = 10;
-   // public 
+    // public 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        nmAnimator = GetComponent<Animator>(); 
+        nmAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (nmAgent.GetComponent<BearStat>().isAlive == true)
+        if (nmAgent.GetComponent<WolfStat>().isAlive == true)
         {
             if (Vector3.Distance(nmAgent.transform.position, unityChan.transform.position) < 30 && Vector3.Distance(nmAgent.transform.position, unityChan.transform.position) > 3)
             {
@@ -30,7 +30,7 @@ public class BearMove : MonoBehaviour
                 nmAnimator.SetBool("RunForward", true);
                 nmAgent.SetDestination(unityChan.transform.position);
                 Debug.Log("run forward berjalan -> dalam range ngejar");
-            } 
+            }
 
             if (timer == 0 && Vector3.Distance(nmAgent.transform.position, unityChan.transform.position) > 30)
             {
@@ -42,10 +42,11 @@ public class BearMove : MonoBehaviour
                 timer = 50;
             }
             timer = timer - 1;
-        } else if (nmAgent.GetComponent<BearStat>().isAlive == false)
+        }
+        else if (nmAgent.GetComponent<WolfStat>().isAlive == false)
         {
             nmAnimator.SetBool("WalkForward", false);
-            nmAnimator.SetBool("RunForward", false); 
+            nmAnimator.SetBool("RunForward", false);
         }
     }
 }

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BearPool : MonoBehaviour
+public class WolfPool : MonoBehaviour
 {
-    public static BearPool instanceSingleton;
+    public static WolfPool instanceSingleton;
 
     private List<GameObject> pooledBears = new List<GameObject>();
 
-    private int amountOfBears = 3;
+    private int amountOfWolves = 4;
 
     [SerializeField]
     private GameObject bearPrefab;
@@ -25,7 +25,7 @@ public class BearPool : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i<amountOfBears; i++)
+        for (int i = 0; i < amountOfWolves; i++)
         {
             GameObject bear = Instantiate(bearPrefab);
             bear.SetActive(true);
@@ -36,9 +36,9 @@ public class BearPool : MonoBehaviour
 
     public GameObject getPooledBear()
     {
-        for (int i = 0; i<pooledBears.Count; i++)
+        for (int i = 0; i < pooledBears.Count; i++)
         {
-            if(!pooledBears[i].activeInHierarchy)
+            if (!pooledBears[i].activeInHierarchy)
             {
                 return pooledBears[i];
             }

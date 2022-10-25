@@ -11,7 +11,7 @@ public class UnityChanController : MonoBehaviour
     //supaya bisa diganti di unity nya tapi ttp private
    
     //2.5f
-    private float defaultSpeed = 2.5f;
+    private float defaultSpeed = playerStat.agility;
 
     [SerializeField]
     private float speed = 0;
@@ -26,8 +26,12 @@ public class UnityChanController : MonoBehaviour
 
     private float gravity = 9.8f;
 
+   
+
     void Start()
     {
+
+       
         charController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
     }
@@ -35,6 +39,7 @@ public class UnityChanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        defaultSpeed = playerStat.agility;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -50,6 +55,7 @@ public class UnityChanController : MonoBehaviour
                 if(Input.GetKey(KeyCode.LeftShift))
                 {
                     this.speed = defaultSpeed + 2f;
+                    Debug.Log(playerStat.agility);
                 } else
                 {
                     this.speed = defaultSpeed;

@@ -11,6 +11,8 @@ public class CanvasController : MonoBehaviour
     public GameObject weaponPopUpPanel;
 
 
+
+
     private void Awake() 
     {
         if (canvasControllerSingleton == null)

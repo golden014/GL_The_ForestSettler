@@ -26,6 +26,10 @@ public class UnityChanAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Cursor.visible)
+        {
+            return;
+        }
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
